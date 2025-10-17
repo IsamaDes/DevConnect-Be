@@ -1,11 +1,15 @@
 import express from "express";
 const router = express.Router();
 
-import projectController from "../controllers/projectController.js";
+import {createProject, getProjects, commentOnProject} from "../controllers/projectController.js";
+import protect from "../middleware/authMiddleware.js";
 
 
 
-router.post("/project", projectController);
+router.post("/create-project", protect, createProject);
+router.get("/projects", getProjects);
+router.post("/:id/comment", protect, commentOnProject);
+
 
 
 

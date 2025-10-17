@@ -1,7 +1,7 @@
 
 import type { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { generateAccessToken } from "../../utils/tokenUtils.js";
+import { generateAccessToken } from "../../utils/tokenUtils";
 import User from "../../models/User.js";
 
 export const refreshAccessToken = async (req: Request, res: Response) => {

@@ -4,12 +4,19 @@ import User from "../models/User.js";
 import Jwt, { JwtPayload }  from "jsonwebtoken";
 
 
-
+// an request interface to extend typescripts Request and add user since Request doesnt have user in it
+export interface AuthenticatedRequest extends Request {
+  user?: {
+    _id: string;
+    email: string;
+    role: string;
+  };
+}
 /**
  * Middleware to protect routes.
  * Verifies JWT token and attaches user info to req.user.
  */
-const protect = async (req: Request, res: Response, next: NextFunction) => {
+const protect = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
 
   
     try {

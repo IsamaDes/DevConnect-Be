@@ -5,8 +5,12 @@ import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
-import { errorHandler } from "./middleware/errorHandler.js";
-
+import {
+  notFound,
+  errorHandler,
+  badRequest,
+  invalidCredentials,
+} from "./middleware/errorMiddleware.js";
 dotenv.config();
 connectDB();
 
@@ -23,5 +27,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
 
 app.use(errorHandler);
+app.use(badRequest);
+app.use(invalidCredentials);
+app.use(notFound);
+
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
