@@ -1,23 +1,25 @@
 import { Request, Response } from "express";
-import Project from "../models/Project.js";
 import {AuthenticatedRequest} from "../middleware/authMiddleware.js";
+import { projectRepository } from "../repositories/projectRepository.js";
 
 
 
 export const createProject = async (req: AuthenticatedRequest, res: Response) => {
   const { title, description } = req.body;
-  const project = await Project.create({ title, description, createdBy: req.user?._id });
+  const createdBy = req.user?._id;
+  const project = await projectRepository.create( title, description, createdBy );
   res.status(201).json(project);
 };
 
 export const getProjects = async (_: Request, res: Response) => {
-  const projects = await Project.find().populate("createdBy", "name");
+  const projects = await projectRepository.getAll()
   res.json(projects);
 };
 
 export const commentOnProject = async (req: AuthenticatedRequest, res: Response) => {
   const { text } = req.body;
-  const project = await Project.findById(req.params.id);
+  const id = req.params._id
+  const project = await projectRepository.findById(id);
   if (!project) return res.status(404).json({ message: "Project not found" });
   project.comments.push({ text, user: req.user?._id! });
   await project.save();

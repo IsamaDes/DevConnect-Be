@@ -1,6 +1,5 @@
 import type { Request, Response } from "express";
 import bcrypt from "bcryptjs";
-import User from "../../models/User.js";
 import validateRegistrationInput from "../../utils/validation.js";
 import { UserRepository } from "../../repositories/userRepository.js";
 
