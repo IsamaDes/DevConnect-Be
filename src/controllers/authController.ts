@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction} from "express";
-import { refreshAccessToken } from "../services/auth/refreshTokenService";
+import { refreshAccessToken } from "../services/auth/refreshTokenService.js";
 import registerUser from "../services/auth/registerService.js";
-import loginUser from "../services/auth/loginService";
+import loginUser from "../services/auth/loginService.js";
 import logOutUser from "../services/auth/logOutService.js"
 
 

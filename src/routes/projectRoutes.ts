@@ -4,11 +4,10 @@ const router = express.Router();
 import {createProject, getProjects, commentOnProject} from "../controllers/projectController.js";
 import protect from "../middleware/authMiddleware.js";
 
-
-
-router.post("/create-project", protect, createProject);
+router.use(protect)
+router.post("/create-project", createProject);
 router.get("/projects", getProjects);
-router.post("/:id/comment", protect, commentOnProject);
+router.post("/:id/comment", commentOnProject);
 
 
 
