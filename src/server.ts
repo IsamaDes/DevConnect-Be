@@ -26,9 +26,9 @@ app.use(cookieParser());
 
 app.get("/", (_, res) => res.send("DevConnect API Running ✅"));
 
-app.use("/api/auth", authRoutes);
-app.use("/api/user", UserRoutes)
-app.use("/api/projects", projectRoutes);
+app.use("/auth", authRoutes);
+app.use("/user", UserRoutes)
+app.use("/projects", projectRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

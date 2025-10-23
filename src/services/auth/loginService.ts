@@ -21,7 +21,7 @@ const loginUser = async (email: string, password: string, res: Response) => {
   if (!email || !password) throw new Error("Email and password required");
 console.log("🔹 Login attempt email:", email.toLowerCase());
 
-  const user = await User.findOne({ email: email.toLowerCase() });
+  const user = await UserRepository.findByEmail(email)
   console.log("🔍 Found user:", user);
   if (!user) throw new Error("User not found");
 
