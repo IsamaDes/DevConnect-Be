@@ -3,7 +3,7 @@ import type { Request, Response, NextFunction } from "express";
 /**
  * Middleware for handling 404 Not Found errors
  */
-const notFound = (req: Request, res: Response, next: NextFunction) => {
+export const notFound = (req: Request, res: Response, next: NextFunction) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
   res.status(404);
   next(error);
@@ -12,25 +12,27 @@ const notFound = (req: Request, res: Response, next: NextFunction) => {
 /**
  * Middleware for handling invalid credentials (401)
  */
-const invalidCredentials = (req: Request, res: Response, next: NextFunction) => {
-  const error = new Error("Invalid Credentials");
-  res.status(401);
-  next(error);
+export const invalidCredentials = (res: Response, message = "Invalid Credentials") => {
+  return res.status(401).json({
+    success: false,
+    message,
+  });
 };
 
 /**
  * Middleware for handling bad request (400)
  */
-const badRequest = (req: Request, res: Response, next: NextFunction) => {
-  const error = new Error("Bad Request");
-  res.status(400);
-  next(error);
+export const badRequest = (req: Request, res: Response, message = "Bad Request") => {
+   return res.status(400).json({
+    success: false,
+    message,
+  });
 };
 
 /**
  * Global error handler middleware
  */
-const errorHandler = (
+export const errorHandler = (
   err: any,
   req: Request,
   res: Response,
@@ -44,4 +46,3 @@ const errorHandler = (
 };
 
 
-export { notFound, invalidCredentials, badRequest, errorHandler };

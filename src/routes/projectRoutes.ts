@@ -6,7 +6,7 @@ import protect from "../middleware/authMiddleware.js";
 
 router.use(protect)
 router.post("/create-project", createProject);
-router.get("/projects", getProjects);
+router.get("/", getProjects);
 router.post("/:id/comment", commentOnProject);
 
 

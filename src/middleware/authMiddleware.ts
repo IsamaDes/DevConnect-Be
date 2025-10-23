@@ -1,7 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
-
-import User from "../models/User.js";
 import Jwt, { JwtPayload }  from "jsonwebtoken";
+import { UserRepository } from "../repositories/userRepository.js";
 
 
 // an request interface to extend typescripts Request and add user since Request doesnt have user in it
@@ -31,8 +30,10 @@ const protect = async (req: AuthenticatedRequest, res: Response, next: NextFunct
      const decoded = Jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
      console.log("✅ Token decoded:", decoded);
 
+     const decodedId = decoded.id
+
       // Fetch user from DB (without password)
-      const user = await User.findById(decoded.id).select("-password");
+      const user = await UserRepository.findById(decodedId);
 
       if (!user) {
         console.log("❌ User not found for ID:", decoded.id);
