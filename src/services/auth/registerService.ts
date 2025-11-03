@@ -31,11 +31,7 @@ const registerUser = async (name: string, email: string, password: string, role:
     role,
   });
 
-  console.log("just before saving user", user)
-
-  await user.save();
-
-console.log("✅ Registration successful for:", user.email, user._id);
+console.log("Registration successful for:", user.email, user._id);
 
   return {
   id: user._id,
