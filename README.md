@@ -6,21 +6,21 @@ The backend is built with **Express.js**, **TypeScript**, and **MongoDB**, using
 
 ---
 
-## 🚀 Features
+ Features
 
-- 🔐 **JWT Authentication** (Access + Refresh Tokens stored in cookies)
-- 👤 **User Registration & Login**
-- 🔄 **Token Refresh & Secure Logout**
-- 🧱 **Role-Based Authorization**
-- 🧩 **Project Management (CRUD)**
-- ⚙️ **TypeScript for type safety**
-- 🧰 **Modular architecture** (controllers, services, repositories)
-- 🚧 **Error handling middleware**
-- 🧼 **Input validation**
+- JWT Authentication** (Access + Refresh Tokens stored in cookies)
+- User Registration & Login**
+- Token Refresh & Secure Logout**
+- Role-Based Authorization**
+- Project Management (CRUD)**
+- TypeScript for type safety**
+- Modular architecture** (controllers, services, repositories)
+- Error handling middleware**
+- Input validation**
 
 ---
 
-## 🗂️ Project Structure
+Project Structure
 
 src/
 │
@@ -82,7 +82,7 @@ src/
 
 ---
 
-## 🧩 API Overview
+ API Overview
 
 ### Auth Routes (`/api/auth`)
 
@@ -111,7 +111,7 @@ src/
 
 ---
 
-## 🔐 Authentication Flow
+Authentication Flow
 
 1. **User logs in / registers** → server sends JWT **access** and **refresh** tokens as **HTTP-only cookies**.
 2. **Subsequent requests** include cookies automatically.
@@ -120,19 +120,19 @@ src/
 
 ---
 
-## 🧠 Setup Instructions
+Setup Instructions
 
-### 1️⃣ Clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/DevConnect-Be.git
 cd DevConnect-Be
 ```
 
-2️⃣ Install dependencies
+2. Install dependencies
 npm install
 
-3️⃣ Configure environment variables
+3. Configure environment variables
 
 Create a .env file in the root directory:
 
@@ -144,28 +144,25 @@ COOKIE_SECRET=your_cookie_secret
 CLIENT_URL=https://devconnect-fe.vercel.app
 NODE_ENV=development
 
-4️⃣ Run the server
+4. Run the server
 npm run dev
 
 Server will start on http://localhost:5000
 
-🧪 Scripts
+Scripts
 Command Description
 npm run dev Run server in development mode (ts-node-dev)
 npm run build Compile TypeScript to JavaScript
 npm start Start server from build directory
-🤝 Frontend Integration
 
+Frontend Integration
 Frontend repo: DevConnect-Fe
-
 Ensure your CORS configuration allows:
-
 origin: process.env.CLIENT_URL,
 credentials: true
 
 so cookies are sent securely between frontend and backend.
 
-🧾 License
+License
 
-This project is licensed under the MIT License
-.
+This project is licensed under the MIT License.
